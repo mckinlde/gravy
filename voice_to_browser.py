@@ -53,8 +53,8 @@ driver = webdriver.Chrome()
 url = "https://www.google.com/maps"  # Replace with the specific Google Maps URL
 driver.get(url)
 
-check = True
-while check==True:
+check = False
+while check==False:
     # Wait for user input
     input("any key to start recording: ")
 
