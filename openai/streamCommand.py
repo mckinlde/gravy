@@ -1,6 +1,8 @@
 import os
 import openai
 
+# You can find your api key at: https://platform.openai.com/api-keys
+# to set it, copy/paste into :$ export OPENAI_API_KEY=""
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # gets API Key from environment variable OPENAI_API_KEY
