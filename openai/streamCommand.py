@@ -1,5 +1,3 @@
-# export OPENAI_API_KEY="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"
-
 import os
 import openai
 
