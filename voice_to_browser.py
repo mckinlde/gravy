@@ -50,7 +50,7 @@ def run_function():
 driver = webdriver.Chrome()
 
 # Open the Google Maps page
-url = "https://www.google.com/maps"  # Replace with the specific Google Maps URL
+url = "https://www.google.com/"  # Replace with the specific Google Maps URL
 driver.get(url)
 
 check = False
@@ -81,7 +81,19 @@ while check==False:
             print("The transcription contains 'restaurants'. Triggering action...")
             # Add your code here to perform the desired action
             click_restaurants()
-    check = bool(input("did it work? "))
+        elif "back" in transcription_content.lower():
+            driver.back()
+        elif "forward" in transcription_content.lower():
+            driver.forward()
+        elif "quit" in transcription_content.lower():
+            check = True
+        # elif "open" in transcription_content.lower():
+        #     command = chat.parse(transcription_content.lower())
+        #     driver.command
+        elif "google maps" in transcription_content.lower():
+            driver.get("https://www.google.com/maps")
+        else:
+            driver.get(f"https://www.google.com/maps/search/{transcription_content.lower()}/")
 
 
 
