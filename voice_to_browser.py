@@ -84,8 +84,8 @@ while check==True:
         input(f"Done recording, I heard: {transcription_content}")
         
         # Check if the transcription content contains both "restaurants" and "click"
-        if "restaurants" in transcription_content.lower() and "click" in transcription_content.lower():
-            print("The transcription contains both 'restaurants' and 'click'. Triggering action...")
+        if "restaurants" in transcription_content.lower():
+            print("The transcription contains 'restaurants'. Triggering action...")
             # Add your code here to perform the desired action
             click_restaurants()
     check = bool(input("did it work? "))
