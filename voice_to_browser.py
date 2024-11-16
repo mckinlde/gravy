@@ -7,6 +7,8 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 # Correct import statement for the custom module
 from speechtoJSON.SpeechToText import record_audio, transcribe_audio
 
+demo = False
+
 def start_driver():
     # Specify 'options' as details for the Chrome Browser executable
     chrome_browser_binary_path = "binaries\chrome-win64\chrome-win64\chrome.exe"
@@ -38,9 +40,18 @@ def click_restaurants():
     except Exception as e:
         print("Error: Restaurants button not found or not clickable.", e)
 
-def generate_function():
+def generate_function(prompt):
     # generate a click_restaurants function
-    print("todo")
+    response = openai.get(f'generate a python code snippet that will: {prompt}')
+    print(response)
+
+    # func_name = "" # GET NAME
+    # func_param = "" # GET PARAMETERS
+    # func_body = "" # GET CODE
+
+    # new_function = f"def {func_name}({func_param}):\n   {func_body}"
+    # new_function()
+
 
 def run_function():
     # run a click_restaurants function
@@ -53,8 +64,8 @@ driver = webdriver.Chrome()
 url = "https://www.google.com/"  # Replace with the specific Google Maps URL
 driver.get(url)
 
-check = False
-while check==False:
+quit = False
+while quit==False:
     # Wait for user input
     input("any key to start recording: ")
 
@@ -86,14 +97,22 @@ while check==False:
         elif "forward" in transcription_content.lower() or "next"  in transcription_content.lower():
             driver.forward()
         elif "quit" in transcription_content.lower():
-            check = True
-        # elif "open" in transcription_content.lower():
-        #     command = chat.parse(transcription_content.lower())
-        #     driver.command
+            quit = True
         elif "google maps" in transcription_content.lower():
             driver.get("https://www.google.com/maps")
         else:
-            driver.get(f"https://www.google.com/maps/search/{transcription_content.lower()}/")
+            if demo:
+                driver.get(f"https://www.google.com/maps/search/{transcription_content.lower()}/")
+            else:
+                # use openAI to generate a python snippet that does transcription_content.lower()
+                command = generate_function(transcription_content.lower())
+                # run the python snippet
+                try:
+                    # driver.command
+                    print(command)
+                    # TODO: command needs to be bound as a function and called, idk how to do that yet
+                except Exception as e:
+                    print("Error with generated function:", e)
 
 
 
