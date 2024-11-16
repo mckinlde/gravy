@@ -10,6 +10,8 @@ def record_audio(filename, duration=5, samplerate=44100):
     sf.write(filename, audio, samplerate)
     print(f"Recording saved to {filename}")
 
+#test
+
 def transcribe_audio(filename, output_textfile):
     """Transcribe audio from a file and save the transcription to a text file."""
     recognizer = sr.Recognizer()
