@@ -2,6 +2,8 @@ import sounddevice as sd
 import soundfile as sf
 import speech_recognition as sr
 
+#Need numpy installed
+
 def record_audio(filename, duration=5, samplerate=44100):
     """Record audio from the microphone and save it as a WAV file."""
     print("Recording...")
