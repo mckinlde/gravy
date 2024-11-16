@@ -27,20 +27,13 @@ def click_restaurants():
         restaurants_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//span[text()='Restaurants']/ancestor::button"))
         )
-        # wait for input
-        input("wait2: ")
-
+        
         # Confirm success with a print statement
         print("Restaurants button found:", restaurants_button)
             
-        # wait for input
-        input("wait3: ")
-
         # Optionally, click the button
         restaurants_button.click()
         print("Clicked on the Restaurants button.")
-        # wait for input
-        input("wait4: ")
 
     except Exception as e:
         print("Error: Restaurants button not found or not clickable.", e)
@@ -81,7 +74,7 @@ while check==True:
     # Open the transcription file and read its content
     with open(transcription_file, 'r') as file:
         transcription_content = file.read()  # Read the entire content of the file
-        input(f"Done recording, I heard: {transcription_content}")
+        print(f"Done recording, I heard: {transcription_content}")
         
         # Check if the transcription content contains both "restaurants" and "click"
         if "restaurants" in transcription_content.lower():
