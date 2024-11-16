@@ -27,20 +27,13 @@ def click_restaurants():
         restaurants_button = WebDriverWait(driver, 10).until(
             EC.element_to_be_clickable((By.XPATH, "//span[text()='Restaurants']/ancestor::button"))
         )
-        # wait for input
-        input("wait2: ")
-
+        
         # Confirm success with a print statement
         print("Restaurants button found:", restaurants_button)
             
-        # wait for input
-        input("wait3: ")
-
         # Optionally, click the button
         restaurants_button.click()
         print("Clicked on the Restaurants button.")
-        # wait for input
-        input("wait4: ")
 
     except Exception as e:
         print("Error: Restaurants button not found or not clickable.", e)
@@ -60,26 +53,36 @@ driver = webdriver.Chrome()
 url = "https://www.google.com/maps"  # Replace with the specific Google Maps URL
 driver.get(url)
 
-# Wait for user input
-input("any ket to start recording: ")
+check = False
+while check==False:
+    # Wait for user input
+    input("any key to start recording: ")
 
-# Record audio using the function imported from the custom module
-output_file = "output.wav"
-transcription_file = "transcription.txt"
+    # Record audio using the function imported from the custom module
+    output_file = "output.wav"
+    transcription_file = "transcription.txt"
 
-try:
-    print("Recording audio...")
-    record_audio(output_file, duration=5)  # Record audio for 5 seconds
-    print("Transcribing audio...")
-    transcribe_audio(output_file, transcription_file)  # Save transcription to a file
-    print("Audio transcribed successfully.")
-except Exception as e:
-    print("Error with audio processing:", e)
+    try:
+        print("Recording audio...")
+        record_audio(output_file, duration=5)  # Record audio for 5 seconds
+        print("Transcribing audio...")
+        transcribe_audio(output_file, transcription_file)  # Save transcription to a file
+        print("Audio transcribed successfully.")
+    except Exception as e:
+        print("Error with audio processing:", e)
 
-# Open the transcription file and read its content
-with open(transcription_file, 'r') as file:
-    transcription_content = file.read()  # Read the entire content of the file
-    input(f"Done recording, I heard: {transcription_content}")
+    # Open the transcription file and read its content
+    with open(transcription_file, 'r') as file:
+        transcription_content = file.read()  # Read the entire content of the file
+        print(f"Done recording, I heard: {transcription_content}")
+        
+        # Check if the transcription content contains both "restaurants" and "click"
+        if "restaurants" in transcription_content.lower():
+            print("The transcription contains 'restaurants'. Triggering action...")
+            # Add your code here to perform the desired action
+            click_restaurants()
+    check = bool(input("did it work? "))
+
 
 
 try:
