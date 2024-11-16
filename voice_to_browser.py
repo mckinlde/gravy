@@ -64,7 +64,7 @@ while check==False:
 
     try:
         print("Recording audio...")
-        record_audio(output_file, duration=5)  # Record audio for 5 seconds
+        record_audio(output_file, duration=3)  # Record audio for 5 seconds
         print("Transcribing audio...")
         transcribe_audio(output_file, transcription_file)  # Save transcription to a file
         print("Audio transcribed successfully.")
@@ -81,9 +81,9 @@ while check==False:
             print("The transcription contains 'restaurants'. Triggering action...")
             # Add your code here to perform the desired action
             click_restaurants()
-        elif "back" in transcription_content.lower():
+        elif "back" in transcription_content.lower() or "previous" in transcription_content.lower():
             driver.back()
-        elif "forward" in transcription_content.lower():
+        elif "forward" in transcription_content.lower() or "next"  in transcription_content.lower():
             driver.forward()
         elif "quit" in transcription_content.lower():
             check = True
