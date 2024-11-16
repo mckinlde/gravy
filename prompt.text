@@ -1,0 +1,13 @@
+I'm using selenium to driver.get() a googlemaps page.  I want to access the "Restaurants" button.
+
+The restaurants button contains a span with the text Restaurants, like this:
+```
+<span class="uEubGf fontTitleSmall">Restaurants</span>
+```
+The class names are machine generated, and change every time.  However, the general DOM structure is consistent, it looks like this:
+```
+<div class="KNfEk Rqu0ae "><button class="e2moi" jsaction="pane.wfvdle26;keydown:ripple.nested;mousedown:ripple.nested;ptrdown:ripple.nested" jslog="120714; track:click;"><div class="tXNTee waIsr T7HQDc "><div class="L6Bbsd"></div><div class="OyjIsf"></div><span class="k48Abe google-symbols" aria-hidden="true" style="font-size: 18px;"></span><span class="uEubGf fontTitleSmall">Restaurants</span></div></button></div>
+```
+Generate a python snippet that uses selenium webdriver to find and click the button.
+
+Provide only the Python code snippet that waits for the 'Restaurants' button to be clickable, using Selenium and XPath to locate a span with the text 'Restaurants' and find its ancestor button
