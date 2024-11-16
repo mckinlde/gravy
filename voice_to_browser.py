@@ -5,7 +5,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service as ChromeService
 
 # Correct import statement for the custom module
-from gravy.SpeechToText import record_audio, transcribe_audio
+from speechtoJSON.SpeechToText import record_audio, transcribe_audio
 
 def start_driver():
     # Specify 'options' as details for the Chrome Browser executable
