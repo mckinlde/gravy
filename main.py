@@ -5,8 +5,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service as ChromeService
 
-# Correct import statement for the custom module
-from speechtoJSON.SpeechToText import record_audio, transcribe_audio
+from utils.SpeechToText import record_audio, transcribe_audio
+
+from OpenAI.streamCommand import openai
 
 demo = False
 
